@@ -313,3 +313,9 @@ TestRecipe/Mirero.MLS.TestModelRecipe.Wafer/Dll
 
 # Local
 .Agent_Assist_Prompt-main
+
+# Code Coverage
+**/TestResults/
+**/coverage*.json
+**/coverage*.xml
+**/coverage*.info

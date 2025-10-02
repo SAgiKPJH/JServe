@@ -8,11 +8,13 @@
 
     <!-- Code Coverage Settings -->
     <CollectCoverage>true</CollectCoverage>
-    <CoverletOutputFormat>cobertura,json,opencover</CoverletOutputFormat>
+    <CoverletOutputFormat>cobertura,json</CoverletOutputFormat>
     <CoverletOutput>./TestResults/</CoverletOutput>
     <Threshold>80</Threshold>
     <ThresholdType>line,branch,method</ThresholdType>
+    <ThresholdStat>total</ThresholdStat>
     <ExcludeByFile>**/Migrations/*.cs</ExcludeByFile>
+    <Include>[Container]*</Include>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,6 +33,10 @@
 
   <ItemGroup>
     <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Container\Container.csproj" />
   </ItemGroup>
 
 </Project>
