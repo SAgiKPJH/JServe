@@ -32,7 +32,6 @@ public class NameTests
         {
             Name.Create("test-name"),
             Name.Create("test_name"),
-            Name.Create("test name"),
             Name.Create("test.name"),
             Name.Create("test:name"),
             Name.Create("test/name")
@@ -41,10 +40,9 @@ public class NameTests
         // Assert
         Assert.Equal("test-name", names[0]);
         Assert.Equal("test_name", names[1]);
-        Assert.Equal("test name", names[2]);
-        Assert.Equal("test.name", names[3]);
-        Assert.Equal("test:name", names[4]);
-        Assert.Equal("test/name", names[5]);
+        Assert.Equal("test.name", names[2]);
+        Assert.Equal("test:name", names[3]);
+        Assert.Equal("test/name", names[4]);
     }
 
     [Fact]
@@ -82,13 +80,11 @@ public class NameTests
     public void Create_WithInvalidSpecialChars_ShouldThrowArgumentException()
     {
         // Arrange
-        var invalidInputs = new[] { "test@name", "test#name", "test$name", "test%name" };
+        var invalidInputs = new[] { "test@name", "test#name", "test$name", "test%name", "test name" };
 
         // Act & Assert
         foreach (var input in invalidInputs)
-        {
             Assert.Throws<ArgumentException>(() => Name.Create(input));
-        }
     }
 
     [Fact]
@@ -138,8 +134,8 @@ public class NameTests
 
         // Act & Assert
         Assert.False(name.Equals(null));
-        Assert.False(name == null);
-        Assert.True(name != null);
+        Assert.False(name is null);
+        Assert.True(name is not null);
         Assert.False(null == name);
         Assert.True(null != name);
     }
